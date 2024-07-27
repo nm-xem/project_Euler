@@ -1,12 +1,11 @@
-dict_pal = []
-for i in range(999, 999, -1):
+max_num = 0
+for i in range(999, 99, -1):
     for j in range(999, i-1, -1):
-        e = str(i*j)
-        if e == e[::-1]:
-            dict_pal.append(e)
-m = int(dict_pal[0])
-for p in dict_pal:
-    if int(p) > m:
-        m = int(p)
-print(m)
-# print(dict_pal)
+        num = i*j
+        if num < max_num:
+            break
+        num_str = str(num)
+        if num_str == num_str[::-1]:
+            max_num = num
+
+print(max_num)

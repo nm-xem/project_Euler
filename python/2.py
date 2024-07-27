@@ -1,22 +1,12 @@
-import time
-
-start = time.time()
-
-def fib (a, b, sum_fib, list_fib):
-    c = a
-    a = b
-    b = a + c
-    if b < 4_000_000:
-        list_fib.append(b)
-        if b % 2 == 0:
-            sum_fib += b
-        req1, req2 = fib (a, b, sum_fib, list_fib)
+def fib (a, b, sum_fib):
+    c = a + b
+    if c <= 4_000_000:
+        if c % 2 == 0:
+            sum_fib += c
+        sum_fib = fib (b, c, sum_fib)
     else:
-        return list_fib, sum_fib
-    return req1, req2
+        return sum_fib
+    return sum_fib
     
-
-req1, req2 = fib (1, 2, 2, [1, 2])
-print(f'{req1}\n{req2}')
-t = time.time() - start
-print(t)
+sum_fib = fib (1, 2, 2)
+print(f'{sum_fib}')
